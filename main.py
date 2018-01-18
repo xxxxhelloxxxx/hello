@@ -21,7 +21,7 @@ def ss_scrapy(url):
         if s[0] == 'IP Address':
             ss_dict['server'] = s[1]
         elif s[0] == "Port":
-            ss_dict['server_port'] = s[1]
+            ss_dict['server_port'] = int(s[1])
         elif s[0] == 'Password':
             ss_dict['password'] = s[1]
         elif s[0] == 'Method':
@@ -33,6 +33,6 @@ def ss_scrapy(url):
 if __name__ == '__main__':
     with open('gui-config.json', 'r+') as f:
         json_data = json.load(f)
-        json_data["configs"] = ss_scrapy('https://go.ishadowx.net/')
+        json_data["configs"] = ss_scrapy('https://global.ishadowx.net/')
         f.seek(0)
         json.dump(json_data, f, indent=4)
